@@ -46,9 +46,9 @@ sunButton.click(function () {
             var currentName = currentWeatherCard.append("<p>");
             currentWeatherCard.append(currentName);
             
-            // Adjust Date 
-            var timeUTC = new Date(response.dt * 1000);
-            currentName.append(response.name + " " + timeUTC.toLocaleDateString("en-US"));
+            // Added Dates 
+            var timeUniversal = new Date(response.dt * 1000);
+            currentName.append(response.name + " " + timeUniversal.toLocaleDateString("en-US"));
             currentName.append(`<img src="https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png">`);
             // Add Temp 
             var currentForecast = currentName.append("<p>");
