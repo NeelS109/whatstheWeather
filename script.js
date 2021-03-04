@@ -32,8 +32,6 @@ var apiFiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" +
             url: apiCurrentForecast,
             method: "GET"
         }).then(function (response) {
-            // list-group append an li to it with just set text
-            // console.log(response.name);
             var citySearch = $(".list-group").addClass("list-group-item");
             citySearch.append("<li>" + response.name + "</li>");
             // Local storage
