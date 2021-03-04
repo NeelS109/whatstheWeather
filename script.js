@@ -17,12 +17,12 @@ var cityCount = 0;
 // on click Search Button
 sunButton.click(function () {
 
-    var searchWeather = $(".searchWeather").val();
+var searchWeather = $(".searchWeather").val();
 
-    // Variable for current weather 
-    var apiCurrentForecast = "https://api.openweathermap.org/data/2.5/weather?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
-    // Variable for 5 day forecast
-    var apiFiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
+// Variable for current weather 
+var apiCurrentForecast = "https://api.openweathermap.org/data/2.5/weather?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
+// Variable for 5 day forecast
+var apiFiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
 
 
     if (searchWeather == "") {
