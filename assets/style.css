@@ -1,0 +1,30 @@
+/* styles for Li */
+li {
+    border-bottom: 1px solid rgb(110, 109, 109);
+    text-align: left;
+    padding-left: 10px;
+}
+/* styles for UL */
+ul {
+    list-style: none;
+
+}
+/* styles for img size  */
+img {
+    width: 125px;
+    height: 125px;
+}
+/* styles for card titles  */
+.card-title {
+    font-size: 20px;
+}
+/* styles for five day forecast colors */
+.fiveDayInfo {
+    padding: 20px;
+    background-color: #31608f;
+    color: white;
+    float: left;
+    margin: 10px;
+    border: 1px solid lightgray;
+
+}

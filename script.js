@@ -75,7 +75,7 @@ sunButton.click(function () {
             
         });
             
-        // Start call for 5-day forecast 
+        //5-day forecast 
         $.ajax({
             url: apiFiveDayForecast,
             method: "GET"
