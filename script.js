@@ -46,35 +46,55 @@ sunButton.click(function () {
             var currentName = currentWeatherCard.append("<p>");
             currentWeatherCard.append(currentName);
             
-            // Added Dates 
+            //Dates 
             var timeUniversal = new Date(response.dt * 1000);
             currentName.append(response.name + " " + timeUniversal.toLocaleDateString("en-US"));
             currentName.append(`<img src="https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png">`);
-            // Add Temp 
+            //Temp 
             var currentForecast = currentName.append("<p>");
             // .addClass("card-text");
             currentName.append(currentForecast);
             currentForecast.append("<p>" + "Temperature: " + response.main.temp + "</p>");
-            // Add Humidity
+            //Humidity
             currentForecast.append("<p>" + "Humidity: " + response.main.humidity + "%" + "</p>");
-            // // Add Wind Speed: 
+            //Wind Speed: 
             currentForecast.append("<p>" + "Wind Speed: " + response.wind.speed + "</p>");
             
             // UV Index URL
             var urlUV = `https://api.openweathermap.org/data/2.5/uvi?appid=b17fa481b192995d7aaa4c07ddf34c35&lat=${response.coord.lat}&lon=${response.coord.lon}`;
-            b17fa481b192995d7aaa4c07ddf34c35
+    
             // UV Index
             $.ajax({
                 url: urlUV,
                 method: "GET"
                 }).then(function (response) {
-            
                 var currentUV = currentForecast.append("<p>" + "UV Index: " + response.value + "</p>").addClass("card-text");
                 currentUV.addClass("UV");
                 currentForecast.append(currentUV);
-                // currentUV.append("UV Index: " + response.value);
             });
             
         });
             
- 
+        // Start call for 5-day forecast 
+        $.ajax({
+            url: apiFiveDayForecast,
+            method: "GET"
+        }).then(function (response) {
+            var day = [0, 8, 16, 24, 32];
+            var nextFiveDay = $(".nextFiveDay").addClass("card-body");
+            var nextDaysDiv = $(".nextDaysOne").addClass("card-text");
+            nextDaysDiv.empty();
+            // For each for 5 days
+            day.forEach(function (i) {
+                var nextDayUTC1 = new Date(response.list[i].dt * 1000);
+                nextDayUTC1 = nextDayUTC1.toLocaleDateString("en-US");
+
+                nextDaysDiv.append("<div class=fiveDayInfo>" + "<p>" + nextDayUTC1 + "</p>" + `<img src="https://openweathermap.org/img/wn/${response.list[i].weather[0].icon}@2x.png">` + "<p>" + "Temperature: " + response.list[i].main.temp + "</p>" + "<p>" + "Humidity: " + response.list[i].main.humidity + "%" + "</p>" + "</div>");
+
+
+            })
+
+        });
+    }
+});
+
