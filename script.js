@@ -20,16 +20,16 @@ sunButton.click(function () {
     var searchWeather = $(".searchWeather").val();
 
     // Variable for current weather 
-    var urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
+    var apiCurrentForecast = "https://api.openweathermap.org/data/2.5/weather?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
     // Variable for 5 day forecast
-    var urlFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
+    var apiFiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchWeather + "&Appid=" + apiKey + "&units=imperial";
 
 
     if (searchWeather == "") {
         console.log(searchWeather);
     } else {
         $.ajax({
-            url: urlCurrent,
+            url: apiCurrentForecast,
             method: "GET"
         }).then(function (response) {
             // list-group append an li to it with just set text
@@ -39,4 +39,42 @@ sunButton.click(function () {
             // Local storage
             var local = localStorage.setItem(cityCount, response.name);
             cityCount = cityCount + 1;
-        }}
+
+             // Current Forecast append 
+            var currentWeatherCard = $(".currentWeatherCard").append("<div>").addClass("card-body");
+            currentWeatherCard.empty();
+            var currentName = currentWeatherCard.append("<p>");
+            currentWeatherCard.append(currentName);
+            
+            // Adjust Date 
+            var timeUTC = new Date(response.dt * 1000);
+            currentName.append(response.name + " " + timeUTC.toLocaleDateString("en-US"));
+            currentName.append(`<img src="https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png">`);
+            // Add Temp 
+            var currentForecast = currentName.append("<p>");
+            // .addClass("card-text");
+            currentName.append(currentForecast);
+            currentForecast.append("<p>" + "Temperature: " + response.main.temp + "</p>");
+            // Add Humidity
+            currentForecast.append("<p>" + "Humidity: " + response.main.humidity + "%" + "</p>");
+            // // Add Wind Speed: 
+            currentForecast.append("<p>" + "Wind Speed: " + response.wind.speed + "</p>");
+            
+            // UV Index URL
+            var urlUV = `https://api.openweathermap.org/data/2.5/uvi?appid=b17fa481b192995d7aaa4c07ddf34c35&lat=${response.coord.lat}&lon=${response.coord.lon}`;
+            b17fa481b192995d7aaa4c07ddf34c35
+            // UV Index
+            $.ajax({
+                url: urlUV,
+                method: "GET"
+                }).then(function (response) {
+            
+                var currentUV = currentForecast.append("<p>" + "UV Index: " + response.value + "</p>").addClass("card-text");
+                currentUV.addClass("UV");
+                currentForecast.append(currentUV);
+                // currentUV.append("UV Index: " + response.value);
+            });
+            
+        });
+            
+ 
