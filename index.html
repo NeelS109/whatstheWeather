@@ -8,10 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.0/umd/popper.min.js" integrity="sha512-uxtUCZ+gIIpqJVZe/0IgmHq5yqW+2gzo3zsSqRXSlUBEM2IYxxnuyg7+i7j9SCv1R74/Zixdx0v8OiyShPWbkQ==" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/d3bce829f3.js" crossorigin="anonymous"></script>
     <!-- This is the title-->
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
@@ -58,11 +60,11 @@
                 </div>
                 <div class="row">
                     <div class="col mt-4">
-                        <div class="card pb-5 fiveDayCard pl-5 bg-secondary">
+                        <div class="card pb-5 nextFiveDay pl-5 bg-secondary">
                             <!-- Appends 5 day forecast based on search-->
-                            <h5 class="card-title mt-2 mr-5">5-Day Forecast </h5>
+                            <h5 class="card-title mt-2 mr-5">The Next 5 Days</h5>
                             <div class="row">
-                                <div class="col fiveDayOne">
+                                <div class="col nextDaysOne">
                                 </div>
     
                             </div>
@@ -73,3 +75,12 @@
         </div>
     </div>
 </div>
+
+<!-- JS and Jquery scripts -->
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
