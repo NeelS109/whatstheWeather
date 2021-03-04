@@ -2,7 +2,6 @@
 var apiKey = "b17fa481b192995d7aaa4c07ddf34c35";
 var sunButton = $(".sunButton");
 
-
 // Consistently adding the data onto HMTL page
 for (var i = 0; i < localStorage.length; i++) {
 
@@ -11,12 +10,12 @@ for (var i = 0; i < localStorage.length; i++) {
 
     citySearch.append("<li>" + city + "</li>");
 }
+
 // City count for local storage 
 var cityCount = 0;
 
 // on click Search Button
 sunButton.click(function () {
-
 var searchWeather = $(".searchWeather").val();
 
 // Variable for current weather 
